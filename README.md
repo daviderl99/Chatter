@@ -1,2 +1,2 @@
 # Chatter
-Chat app using [socket.io](#https://socket.io/){:target="_blank"}
+Chat app using [socket.io](https://socket.io/){:target="_blank"}
