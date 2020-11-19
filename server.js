@@ -1,11 +1,16 @@
 const express = require("express");
-const socket = require("socket.io");
-
 const app = express();
-const server = app.listen(3000);
-const io = socket(server);
+
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const PORT = 3000;
 
 app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname, "/index.html");
+  console.log(__dirname);
+})
 
 io.sockets.on("connection", (socket) => {
   console.log("New connection: " + socket.id);
@@ -13,6 +18,12 @@ io.sockets.on("connection", (socket) => {
   socket.on("message", (message) => {
     io.sockets.emit("message", message);
   });
+
+  socket.on("disconnect", (scoket) => {
+    console.log("Disconnected: " + socket.id);
+  });
 });
 
-console.log("Socket server is running");
+http.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
+});
