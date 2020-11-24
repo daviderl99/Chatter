@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
+
 const PORT = 3000;
 
 app.use(express.static("public"));
@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
 io.sockets.on("connection", (socket) => {
   console.log("New connection: " + socket.id);
 
-  socket.on("message", (message) => {
-    io.sockets.emit("message", message);
+  socket.on("message", (data) => {
+    io.sockets.emit("message", data);
   });
 
   socket.on("disconnect", (scoket) => {

@@ -1,71 +1,102 @@
 
-h2 {
-  font-size: 18px;
-  padding: 10px 20px;
-  color: #7F0037;
+:root {
+  --body-bg: #000;
+  --main-color: #7F0037;
+  --text-color: #DDD;
+  --chat-bg: #111;
+  --chat-border: #000;
+  --chat-shadow: #C8C8C880;
+  --msg-color: #FFF;
+  --msg-input-bg: #222;
+  --name-input-bg: #222;
+  --input-border: #7F0037;
 }
 
-#container {
-  max-width: 100vw;
-  margin: 0 auto;
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--body-bg);
+}
+
+h2 {
+  font-size: 2em;
+  color: #7F0037;
+  text-align: center;
 }
 
 #chat-window {
   margin: 30px auto;
-  border: 1px solid #DDD;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
+  border: 1px solid var(--chat-border);
+  box-shadow: 0 0 5px 2px var(--chat-shadow);
   border-radius: 2px;
   height: 400px;
+  background: var(--chat-bg);
   overflow: auto;
-  background: #F9F9F9;
+  overflow-x: hidden;
 }
 
-#output p {
+.message-box {
   padding: 14px 0px;
   margin: 0 20px;
-  border-bottom: 1px solid #E9E9E9;
-  color: #555;
+  border-bottom: 1px solid var(--main-color);
+  color: var(--msg-color);
+  overflow-wrap: break-word;
 }
 
-#feedback p {
-  color: #AAA;
-  padding: 14px 0px;
-  margin: 0 20px;
-}
-
-#output strong {
-  color: #7F0037;
-}
-
-label {
-  box-sizing: border-box;
-  display: block;
-  padding: 10px 20px;
+.message-box span {
+  color: var(--main-color);
+  font-weight: bold;
 }
 
 #message-input {
-  padding: 10px 20px;
-  box-sizing: border-box;
-  background: #EEE;
-  border: 0;
-  display: block;
+  padding: 10px;
   width: 100%;
-  background: #FFF;
-  border: 1px solid black;
-  border-radius: 5vh;
+  background: var(--msg-input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
   outline: none;
   font-size: 16px;
-  
+}
+
+#name-input {
+  padding: 10px;
+  width: 10%;
+  background: var(--name-input-bg);
+  color: var(--main-color);
+  border: 1px solid var(--input-border);
+  border-right: none;
+  border-radius: .25rem 0 0 .25rem;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.message-controls {
+  display: flex;
 }
 
 #send-button {
-  background: #7F0037;
+  background: var(--main-color);
   color: #FFF;
-  font-size: 18px;
+  padding: 10px 20px;
+  font-size: 16px;
   border: 0;
-  padding: 12px 0;
-  width: 100%;
-  margin: 2% auto auto auto;
-  border-radius: 5vh;
+  border-radius: 0 .25rem .25rem 0;
   outline: none;
+  cursor: pointer;
+}
+
+@media (min-width: 771px) {
+  /* Desktop */
+  .container {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 770px) {
+  /* Mobile */
+
 }
