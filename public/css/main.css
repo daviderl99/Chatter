@@ -88,6 +88,18 @@ h2 {
   cursor: pointer;
 }
 
+#feedback {
+  padding: 14px 0px;
+  margin: 0 20px;
+  color: var(--msg-color);
+  overflow-wrap: break-word;
+}
+
+#feedback span {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
 @media (min-width: 771px) {
   /* Desktop */
   .container {
@@ -98,5 +110,4 @@ h2 {
 
 @media (max-width: 770px) {
   /* Mobile */
-
 }

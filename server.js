@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
+// const { getAllMessages } = require("./database.js");
 
 const PORT = 3000;
 
@@ -9,8 +10,7 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname, "/index.html");
-  console.log(__dirname);
-})
+});
 
 io.sockets.on("connection", (socket) => {
   console.log("New connection: " + socket.id);
@@ -19,7 +19,11 @@ io.sockets.on("connection", (socket) => {
     io.sockets.emit("message", data);
   });
 
-  socket.on("disconnect", (scoket) => {
+  socket.on("typing", (data) => {
+    socket.broadcast.emit("typing", data);
+  });
+
+  socket.on("disconnect", () => {
     console.log("Disconnected: " + socket.id);
   });
 });
